@@ -1,0 +1,5 @@
+[
+  { "name": "informational", "details": "" },
+  { "name": "important", "details": "" },
+  { "name": "critical", "details": "" }
+]
