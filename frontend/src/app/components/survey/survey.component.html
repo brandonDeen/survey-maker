@@ -1,0 +1,34 @@
+<section class="survey">
+  <h1 class="title" id="survey-name">{{survey.name}}</h1>
+
+  <!-- For each question in the survey -->
+  <div id="survey-questions" *ngFor="let question of survey.questions">
+    <span>{{question.text}}</span>
+    <br>
+
+    <div *ngIf="question.response_type.input_type == 'text'">
+      <input type="text" id="response-to-question-{{question.id}}" />
+    </div>
+
+    <div *ngIf="question.response_type.input_type == 'number'">
+      <input type="number" id="response-to-question-{{question.id}}" />
+    </div>
+
+    <div *ngIf="question.response_type.input_type == 'radio'">
+      <div *ngFor="let response_option of question.response_type.response_options">
+        <input type="radio" id="ro-{{response_option.id}}" name="response-to-question-{{question.id}}" value="{{response_option.value}}">
+        <label for="ro-{{response_option.id}}">{{response_option.label}}</label><br>
+      </div>
+    </div>
+
+    <div *ngIf="question.response_type.input_type == 'checkbox'">
+      <div *ngFor="let response_option of question.response_type.response_options">
+        <input type="checkbox" id="ro-{{response_option.id}}" name="response-to-question-{{question.id}}" value="{{response_option.value}}">
+        <label for="response-to-question-{{question.id}}"> {{response_option.label}}</label><br>
+      </div>
+    </div>
+
+    <br>
+  </div>
+</section>
+

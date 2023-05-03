@@ -24,24 +24,23 @@
 
 `NOTE: currently the data is just in JSON format, the goal is to use a Relational DB`
 
-a Category has a name, details, and possibly a parent category (FK)
-a Question has a category, text (rendered html), and a response type
-a Response Type has an input type (html), and one to many Response Options
-a Response Option has a label, a value, and a Response Type (FK)
-a Response has a value or Response Option (FK), and a Question (FK)
-    a Response can be flagged
-a Flag has text, a Response (FK), and a rating (low, med, high)
+- a Category has a name, details, and possibly a parent category (FK)
+- a Question has a category, text (rendered html), and a response type
+- a Response Type has an input type (html), and one to many Response Options
+- a Response Option has a label, a value, and a Response Type (FK)
+- a Response has a value or Response Option (FK), and a Question (FK)
+    - a Response can be flagged
+- a Flag has text, a Response (FK), and a rating (low, med, high)
+- a Question can have rules
+- a Rule has a deciding question (FK), deciding response option (FK), a follow up question to ask (FK), requirement type, requirement details, and zero to many valid response options
+    - when deciding question X 
+    - has response equal to deciding response option Y
+    - then ask follow up question Z
+        - if requirement type is NOT NULL
+        - then the requirement can only be met by response options [a,b,c]
 
-a Question can have rules
-a Rule has a deciding question (FK), deciding response option (FK), a follow up question to ask (FK), requirement type, requirement details, and zero to many valid response options
-- when deciding question X 
-- has response equal to deciding response option Y
-- then ask follow up question Z
-    - if requirement type is NOT NULL
-    - then the requirement can only be met by response options [a,b,c]
-
-a Template has a name, and one to many Questions
-a Survey has a name, one to many Questions (FK), and one to many Responses (FK)
+- a Template has a name, and one to many Questions
+- a Survey has a name, one to many Questions (FK), and one to many Responses (FK)
 
 ## Queries
 ```sql
